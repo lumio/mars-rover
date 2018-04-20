@@ -1,0 +1,13 @@
+{
+  "name": "mars-rover",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Benjamin Falk <benjamin.falk@cyanjoe.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "exit 1",
+    "test": "exit 1",
+    "build": "exit 1"
+  }
+}
