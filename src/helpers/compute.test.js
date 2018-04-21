@@ -14,10 +14,21 @@ describe( 'helpers/compute', () => {
     const answers = {
       'plateau': '5 5',
       'rover1Landing': '1 2 S',
-      'rover1Instructions': 'LMLMLMLMM'
+      'rover1Instructions': 'LMLMLMLMM',
     };
 
     const result = computeAnswers( answers, 1 );
     expect( result ).to.deep.equal( { Rover1: '1 1 S' } );
+  } );
+
+  it( 'computes answers and shows errors', () => {
+    const answers = {
+      'plateau': '5 5',
+      'rover1Landing': '0 0 S',
+      'rover1Instructions': 'MMLMLMLMM',
+    };
+
+    const result = computeAnswers( answers, 1 );
+    expect( result.Rover1 ).to.include( 'Error: Illegal movement' );
   } );
 } );
