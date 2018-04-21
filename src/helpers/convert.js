@@ -24,7 +24,24 @@ const degToDirection = ( deg ) => {
   return possibleValues[ directionKey ];
 }
 
+/**
+ * Maps degree to a degree between 0 and 360
+ */
+const normalizeDeg = ( deg ) => {
+  let newDeg = deg;
+  while ( newDeg < 0 ) {
+    newDeg += 360;
+  }
+
+  while ( newDeg > 360 ) {
+    newDeg -= 360;
+  }
+
+  return newDeg;
+}
+
 module.exports = {
   degToDirectionKey,
   degToDirection,
+  normalizeDeg,
 };
