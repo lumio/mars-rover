@@ -1,13 +1,17 @@
 {
   "name": "mars-rover",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "bin/index.js",
   "author": "Benjamin Falk <benjamin.falk@cyanjoe.com>",
   "license": "MIT",
   "private": true,
   "scripts": {
     "start": "exit 1",
-    "test": "exit 1",
+    "test": "mocha --recursive ./src/",
     "build": "exit 1"
+  },
+  "dependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.1.1"
   }
 }
