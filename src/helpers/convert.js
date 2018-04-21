@@ -14,12 +14,12 @@ const degToDirectionKey = ( deg ) => {
     normalized = possibleValuesLen + normalized;
   }
   return normalized;
-}
+};
 
 const degToDirection = ( deg ) => {
   const directionKey = degToDirectionKey( deg );
   return possibleValues[ directionKey ];
-}
+};
 
 const cardinalDirectionToDeg = ( cardinalDirection ) => {
   const index = possibleValues.indexOf( cardinalDirection.toUpperCase() );
@@ -29,7 +29,7 @@ const cardinalDirectionToDeg = ( cardinalDirection ) => {
   }
 
   return index * 90;
-}
+};
 
 /**
  * Maps degree to a degree between 0 and 360
@@ -45,11 +45,39 @@ const normalizeDeg = ( deg ) => {
   }
 
   return newDeg;
-}
+};
+
+const coordinateStringToObject = ( input, includeOrientation = false ) => {
+  const regex = includeOrientation ?
+    /^(\d+) (\d+) ([NESW])$/
+    : /^(\d+) (\d+)$/;
+
+  const match = input.match( regex );
+  if ( !match ) {
+    return false;
+  }
+
+  const coordinates = {
+    x: +match[ 1 ],
+    y: +match[ 2 ],
+  };
+
+  if ( includeOrientation ) {
+    coordinates.orientation = match[ 3 ];
+  }
+
+  return coordinates;
+};
+
+const coordinateObjectToString = ( coordinates ) => {
+  return `${ coordinates.x } ${ coordinates.y }`;
+};
 
 module.exports = {
   degToDirectionKey,
   degToDirection,
   cardinalDirectionToDeg,
   normalizeDeg,
+  coordinateStringToObject,
+  coordinateObjectToString,
 };

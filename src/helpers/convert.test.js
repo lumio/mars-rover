@@ -4,6 +4,8 @@ const {
   degToDirection,
   cardinalDirectionToDeg,
   normalizeDeg,
+  coordinateStringToObject,
+  coordinateObjectToString,
 } = require( './convert' );
 
 describe( 'helpers/convert', () => {
@@ -42,5 +44,18 @@ describe( 'helpers/convert', () => {
 
     expect( normalizeDeg( 0 ) ).to.equal( 0 );
     expect( normalizeDeg( 360 ) ).to.equal( 360 );
+  } );
+
+  it( 'converts coordination string to coordinates', () => {
+    expect( coordinateStringToObject( '10 20' ) )
+      .to.deep.equal( { x: 10, y: 20 } );
+    expect( coordinateStringToObject( '10 20 N', true ) )
+      .to.deep.equal( { x: 10, y: 20, orientation: 'N' } );
+  } );
+
+  it( 'converts coordinates to string', () => {
+    expect(
+      coordinateObjectToString( { x: 10, y: 20 } )
+    ).to.equal( '10 20' );
   } );
 } );
