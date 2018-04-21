@@ -31,3 +31,5 @@ Rover1 Instructions MLMM (set instructions)
 
 You can set the `ROVER_COUNT` environment variable to change the count of
 rovers.
+
+**Tested in Node.js v8.7.0**
