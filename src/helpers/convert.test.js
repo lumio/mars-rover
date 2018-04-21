@@ -2,6 +2,7 @@ const { expect } = require( 'chai' );
 const {
   degToDirectionKey,
   degToDirection,
+  cardinalDirectionToDeg,
   normalizeDeg,
 } = require( './convert' );
 
@@ -24,6 +25,13 @@ describe( 'helpers', () => {
     expect( degToDirection( 180 ) ).to.equal( 'S' );
     expect( degToDirection( 270 ) ).to.equal( 'W' );
     expect( degToDirection( 360 ) ).to.equal( 'N' );
+  } );
+
+  it( 'converts cardinal direction to degree', () => {
+    expect( cardinalDirectionToDeg( 'N' ) ).to.equal( 0 );
+    expect( cardinalDirectionToDeg( 'E' ) ).to.equal( 90 );
+    expect( cardinalDirectionToDeg( 'S' ) ).to.equal( 180 );
+    expect( cardinalDirectionToDeg( 'W' ) ).to.equal( 270 );
   } );
 
   it( 'normalizes degree that are out of range', () => {

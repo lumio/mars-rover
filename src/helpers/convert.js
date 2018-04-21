@@ -16,12 +16,19 @@ const degToDirectionKey = ( deg ) => {
   return normalized;
 }
 
-/**
- * Convert degree to cardinal direction
- */
 const degToDirection = ( deg ) => {
   const directionKey = degToDirectionKey( deg );
   return possibleValues[ directionKey ];
+}
+
+const cardinalDirectionToDeg = ( cardinalDirection ) => {
+  const index = possibleValues.indexOf( cardinalDirection.toUpperCase() );
+
+  if ( index === -1 ) {
+    throw new Error( `Invalid cardinal direction ${ cardinalDirection }` );
+  }
+
+  return index * 90;
 }
 
 /**
@@ -43,5 +50,6 @@ const normalizeDeg = ( deg ) => {
 module.exports = {
   degToDirectionKey,
   degToDirection,
+  cardinalDirectionToDeg,
   normalizeDeg,
 };
