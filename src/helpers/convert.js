@@ -1,7 +1,7 @@
 const possibleValues = [ 'N', 'E', 'S', 'W' ];
 const possibleValuesLen = possibleValues.length;
 
-const convertDegToDirectionKey = ( deg ) => {
+const degToDirectionKey = ( deg ) => {
   if ( deg < 0 || deg > 360 ) {
     throw new Error( 'Invalid degree. Only numbers between 0 and 360 are allowed' );
   }
@@ -13,12 +13,12 @@ const convertDegToDirectionKey = ( deg ) => {
   return normalized;
 }
 
-const convertDegToDirection = ( deg ) => {
-  const directionKey = convertDegToDirectionKey( deg );
+const degToDirection = ( deg ) => {
+  const directionKey = degToDirectionKey( deg );
   return possibleValues[ directionKey ];
 }
 
 module.exports = {
-  convertDegToDirectionKey,
-  convertDegToDirection,
+  degToDirectionKey,
+  degToDirection,
 };
