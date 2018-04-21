@@ -42,7 +42,7 @@ const generateQuestions = ( roverCount = 1 ) => {
 const computeAnswers = ( answers, roverCount = 1 ) => {
   const output = {};
   const plateauDimensions = coordinateStringToObject( answers.plateau );
-  const p = new Plateau( plateauDimensions.x, plateauDimensions.y, true );
+  const p = new Plateau( plateauDimensions.x, plateauDimensions.y );
 
   for ( let i = 1; i <= roverCount; ++i ) {
     const roverName = `Rover${ i }`;

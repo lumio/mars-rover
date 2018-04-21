@@ -6,7 +6,11 @@ const {
 const deltaPos = require( '../helpers/delta' );
 
 class Rover {
-  constructor( x, y, orientation, plateau = null ) {
+  constructor( x, y, orientation, plateau ) {
+    if ( !plateau ) {
+      throw new Error( 'No plateau given' );
+    }
+
     const position = {
       x: 0 | x,
       y: 0 | y,
@@ -51,8 +55,10 @@ class Rover {
     };
 
     if ( this.plateau && !this.plateau.isWithin( newPosition ) ) {
-      throw new Error( `Illegal movement from ${ this.position.x },${ this.position.y }
-        and orientation ${ degToDirection( this.orientationDeg ) }` );
+      const errorMsg = 'Illegal movement from ' +
+        `${ this.position.x },${ this.position.y } and orientation ` +
+        `${ degToDirection( this.orientationDeg ) }`;
+      throw new Error( errorMsg );
     }
 
     this.position = newPosition;

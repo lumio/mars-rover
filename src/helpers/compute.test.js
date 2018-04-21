@@ -22,13 +22,21 @@ describe( 'helpers/compute', () => {
   } );
 
   it( 'computes answers and shows errors', () => {
-    const answers = {
+    const answers1 = {
       'plateau': '5 5',
       'rover1Landing': '0 0 S',
       'rover1Instructions': 'MMLMLMLMM',
     };
 
-    const result = computeAnswers( answers, 1 );
-    expect( result.Rover1 ).to.include( 'Error: Illegal movement' );
+    const result1 = computeAnswers( answers1, 1 );
+    expect( result1.Rover1 ).to.include( 'Error: Illegal movement' );
+
+    const answers2 = {
+      plateau: '3 3',
+      rover1Landing: '3 3 N',
+      rover1Instructions: 'M',
+    };
+    const result2 = computeAnswers( answers2, 1 );
+    expect( result2.Rover1 ).to.include( 'Error: Illegal movement' );
   } );
 } );
