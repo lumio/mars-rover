@@ -1,3 +1,5 @@
+const ROVER_COUNT = +process.env.ROVER_COUNT || 2;
+
 const inquirer = require( 'inquirer' );
 
 const {
@@ -6,11 +8,10 @@ const {
 } = require( './helpers/compute' );
 
 const prompt = async () => {
-  const roverCount = 1;
-  const questions = generateQuestions( roverCount );
+  const questions = generateQuestions( ROVER_COUNT );
 
   const answers = await inquirer.prompt( questions )
-  const output = computeAnswers( answers, roverCount );
+  const output = computeAnswers( answers, ROVER_COUNT );
   const outputEntries = Object.entries( output );
   for ( const entry of outputEntries ) {
     console.log( `${ entry[ 0 ] }: ${ entry[ 1 ] }` );
