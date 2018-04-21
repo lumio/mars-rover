@@ -6,7 +6,7 @@ const {
   normalizeDeg,
 } = require( './convert' );
 
-describe( 'helpers', () => {
+describe( 'helpers/convert', () => {
   it( 'converts degree to direction key', () => {
     expect( degToDirectionKey( 0 ) ).to.equal( 0 );
     expect( degToDirectionKey( 90 ) ).to.equal( 1 );

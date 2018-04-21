@@ -1,7 +1,7 @@
 const { expect } = require( 'chai' );
 const Plateau = require( './plateau' );
 
-describe( 'Plateau', () => {
+describe( 'entities/plateau', () => {
   const testPos = {
     x: -1,
     y: 6,

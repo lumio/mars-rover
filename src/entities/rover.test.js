@@ -1,7 +1,7 @@
 const { expect } = require( 'chai' );
 const Rover = require( './rover' );
 
-describe( 'Rover', () => {
+describe( 'entities/rover', () => {
   it( 'initiates new rover instance', () => {
     const r = new Rover( 5, 5, 'S' );
     expect( r.getPosition() ).to.deep.equal( { x: 5, y: 5 } );
