@@ -51,7 +51,8 @@ class Rover {
     };
 
     if ( this.plateau && !this.plateau.isWithin( newPosition ) ) {
-      throw new Error( 'Illegal movement' );
+      throw new Error( `Illegal movement from ${ this.position.x },${ this.position.y }
+        and orientation ${ degToDirection( this.orientationDeg ) }` );
     }
 
     this.position = newPosition;
