@@ -3,7 +3,7 @@ const inquirer = require( 'inquirer' );
 const {
   generateQuestions,
   computeAnswers,
-} = require( './helpers/questions' );
+} = require( './helpers/compute' );
 
 const prompt = async () => {
   const roverCount = 1;

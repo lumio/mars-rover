@@ -2,7 +2,7 @@ const { expect } = require( 'chai' );
 const {
   generateQuestions,
   computeAnswers,
-} = require( './questions' );
+} = require( './compute' );
 
 describe( 'helpers/questions', () => {
   it( 'generates questions', () => {
