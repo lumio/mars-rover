@@ -18,6 +18,7 @@ class Rover {
     this.position = position;
     this.orientationDeg = cardinalDirectionToDeg( orientation || 'N' );
     this.plateau = plateau;
+    this.index = this.plateau.addRover( position );
   }
 
   execInstructions( instructions ) {
@@ -54,13 +55,19 @@ class Rover {
       y: this.position.y + delta.y,
     };
 
+    if ( !this.plateau.isMovementAllowed( newPosition ) ) {
+      return;
+    }
+
     if ( this.plateau && !this.plateau.isWithin( newPosition ) ) {
       const errorMsg = 'Illegal movement from ' +
         `${ this.position.x },${ this.position.y } and orientation ` +
         `${ degToDirection( this.orientationDeg ) }`;
       throw new Error( errorMsg );
+      return;
     }
 
+    this.plateau.updateRoverPosition( this.index, newPosition );
     this.position = newPosition;
   }
 
